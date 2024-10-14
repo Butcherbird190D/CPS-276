@@ -12,7 +12,21 @@ while ($i < 10) {
 //$output = 3;
 //$output = "scott" //this is an example of interperative language. once this is parsed, the variable dies. it will not remember variables like compiled languages (Java)
 
+<<<<<<< HEAD
 
+=======
+echo '<ul>'; // Start the outer list
+for ($i = 1; $i <= 3; $i++) {
+    echo '<li>Item ' . $i; // Start the inner item
+    echo '<ul>'; // Start the inner list
+    for ($j = 1; $j <= 5; $j++) {
+        echo '<li>Sub-item ' . $j . '</li>'; // Inner list items
+    }
+    echo '</ul>'; // End the inner list
+    echo '</li>'; // End the inner item
+}
+echo '</ul>'; // End the outer list
+>>>>>>> 92dd38f7b9a4e2384e5d7a4c7a1a817f8498fbc3
 
 $string = <<<HTML
 <p>this is a paragraph</p> 
