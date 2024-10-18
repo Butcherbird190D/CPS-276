@@ -2,10 +2,10 @@
 class Directories {
 
     public function createDirectoryAndFile($directoryName, $fileContent) {
-        $baseDir = 'directories/';
-        $dirPath = $baseDir . $directoryName;
+        $dir = 'directories/'; 
+        $dirPath = $dir . $directoryName; 
 
-        // Check if the directory already exists
+        
         if (is_dir($dirPath)) {
             return [
                 'status' => 'error',
@@ -13,7 +13,7 @@ class Directories {
             ];
         }
 
-        // Try to create the directory
+        
         if (!mkdir($dirPath, 0777, true)) {
             return [
                 'status' => 'error',
@@ -21,16 +21,16 @@ class Directories {
             ];
         }
 
-        // Create the file within the new directory
+        
         $filePath = $dirPath . '/readme.txt';
-        if (file_put_contents($filePath, $fileContent) === false) {
+        if (!file_put_contents($filePath, $fileContent)) {
             return [
                 'status' => 'error',
                 'message' => 'Failed to create the file.'
             ];
         }
 
-        // Success, return the success message and file path
+        
         return [
             'status' => 'success',
             'message' => 'Directory and file created successfully.',
