@@ -112,18 +112,17 @@ function addData($post){
   
     $pdo = new PdoMethods();
   
-    // Prepare the SQL statement
+   
     $sql = "INSERT INTO contacts (name, address, city, state, phone, email, dob, contacts, age) 
             VALUES (:name, :address, :city, :state, :phone, :email, :dob, :contacts, :age)";
   
-    // Combine the selected checkboxes into a string
-    // If the checkbox is selected, it will be stored as a comma-separated list
+   
     $contacts = isset($post['updates']) ? implode(",", $post['updates']) : "";
   
-    // Get the selected age range from radio buttons
+    
     $age = isset($post['ageRange']) ? $post['ageRange'] : "";
 
-    // Prepare the bindings for the query
+    
     $bindings = [
       [':name', $post['name'], 'str'],
       [':address', $post['address'], 'str'],

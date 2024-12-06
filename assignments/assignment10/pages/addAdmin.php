@@ -41,7 +41,7 @@ $elementsArr = [
     "errorMessage" => "<span style='color: red; margin-left: 15px;'>Password cannot be blank and must be at least 8 characters</span>",
     "errorOutput" => "",
     "type" => "password",
-    "value" => "", // Leave value empty for security
+    "value" => "",
     "regex" => "password"
 ],
     "status" => [
@@ -57,13 +57,12 @@ function addData($post) {
     require_once('classes/Pdo_methods.php');
 
     $pdo = new PdoMethods();
-    $hashedPassword = password_hash($post['password'], PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO admins (name, email, password, status) VALUES (:name, :email, :password, :status)";
     $bindings = [
         [':name', $post['name'], 'str'],
         [':email', $post['email'], 'str'],
-        [':password', $hashedPassword, 'str'],
+        [':password',password_hash($post['password'], PASSWORD_DEFAULT),'str'],
         [':status', $post['status'], 'str']
     ];
 

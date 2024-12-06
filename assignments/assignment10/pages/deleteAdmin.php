@@ -40,7 +40,7 @@ function getForm($error) {
         return ["<p>No admins available to delete</p>", ""];
     }
 
-    // Table rows for admins
+    
     $adminRows = "";
     foreach ($admins as $admin) {
         $adminRows .= "<tr>
@@ -51,10 +51,10 @@ function getForm($error) {
         </tr>";
     }
 
-    // Acknowledgement message
+    
     $acknowledgement = $error ? "<p style='color: red;'>Could not delete the admin(s)</p>" : "<p>Admin(s) deleted successfully!</p>";
 
-    // The form and table
+    
     $form = <<<HTML
         <form method="post" action="index.php?page=deleteAdmin">
             <h1>Delete Admin</h1>
